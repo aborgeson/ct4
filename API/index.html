@@ -81,30 +81,30 @@
             // const a = new String
             // const a = new String(adviceText)
 
-            fetchShakespeareData(adviceText)
+            // fetchShakespeareData(adviceText)
         }
 
-            const fetchShakespeareData = (adviceText) => {
-                // console.log ('fetching Shakespeare data!')
+            // const fetchShakespeareData = (adviceText) => {
+            //     // console.log ('fetching Shakespeare data!')
 
-                //fetch the api from the variable you declared, then convert it to json so it's readable, append the data from below
-                fetch(`https://api.funtranslations.com/translate/shakespeare.json?text=${adviceText}`)
-                .then(response => response.json())
-                .then((data) => appendShakespeareData(data))
-            }
+            //     //fetch the api from the variable you declared, then convert it to json so it's readable, append the data from below
+            //     fetch(`https://api.funtranslations.com/translate/shakespeare.json?text=${adviceText}`)
+            //     .then(response => response.json())
+            //     .then((data) => appendShakespeareData(data))
+            // }
     
-                const appendShakespeareData = (data) => {
-                    // console.log(data)
+            //     const appendShakespeareData = (data) => {
+            //         // console.log(data)
 
-                    const shakespeareData = data.contents
-                    const translatedText = shakespeareData.translated
+            //         const shakespeareData = data.contents
+            //         const translatedText = shakespeareData.translated
 
-                    //ACTIVATE THIS TOMORROW, DEACTIVATE ADVICE DATA!!!
-                    // const nameHeader = document.createElement('h3')
-                    // nameHeader.innerText = "Your advice: " + translatedText
-                    // adviceSection.appendChild(nameHeader)
+            //         // ACTIVATE THIS TOMORROW, DEACTIVATE ADVICE DATA!!!
+            //         const nameHeader = document.createElement('h3')
+            //         nameHeader.innerText = "Your advice: " + translatedText
+            //         adviceSection.appendChild(nameHeader)
 
-            }
+            // }
 
         //since js is event based, we need to specify what event the element needs to be waiting for, and what the function will perform
         triggerButton.addEventListener("click", fetchNASAdata)
