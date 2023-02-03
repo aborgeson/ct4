@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advice Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- define html elements --> 
+    <section id="backgroundImage"></section>
+    <div class="top-text"><h1>Do you seek advice? Click below...</h1></div>
+    <div class="advice">
+        <section id="adviceSection"></section></div>
+        <div id="initTrigger"><button type="button">Give me Advice</button></div>
+    <!-- <button role="button" id="initTrigger">Give me Advice</button> -->
+
+      
+
+
+    <script>
+        //define variables for elements to add interactivity
+        let triggerButton = document.getElementById('initTrigger')
+        let adviceSection = document.getElementById('adviceSection')
+        let nasaSection = document.getElementById('backgroundImage')
+        let adviceText;
+        let nasaImg;
+
+        const randomAdviceURL = "https://api.adviceslip.com/advice?t=" + Math.random()
+        const translationURL = "https://api.funtranslations.com/translate/shakespeare.json?text="
+        const nasaAPODurl = "https://api.nasa.gov/planetary/apod"
+        const nasaAPIkey = "api_key=kn4LwT2WBC3PYvl6zN5EmvbpmI3dOO2tZRfGpV6c"
+
+        const fetchNASAdata = () => {
+            const fetchURL = nasaAPODurl+"?"+nasaAPIkey+"&count=10"
+            fetch(fetchURL)
+            .then((response) => response.json())
+            .then((data) => appendNASAdata(data))
+        }
+        const appendNASAdata = (data) => {
+            console.log(data)
+
+            const dailyData = data[0]
+            const nasaImg = dailyData.url
+
+            // set the background image of the backgroundImage section
+            nasaSection.style.backgroundImage = `url(${nasaImg})`;
+            nasaImg.alt = "Space Divination"
+
+            //create an html element to house  image in
+            // const nasaImage = document.createElement('img')
+            // nasaImage.src = nasaImg
+            // nasaSection.appendChild(nasaImage)
+
+            fetchAdviceData()
+        }
+
+        const fetchAdviceData = () => {
+            console.log ('fetching!')
+
+            //fetch the api from the variable you declared, then convert it to json so it's readable, append the data from below
+            fetch(randomAdviceURL)
+            .then((response) => response.json())
+            .then((data) => appendAdviceData(data))
+        }
+
+        //append the data from the json to show on the page - grab the first object from the array
+        const appendAdviceData = (data) =>{
+            console.log(data)
+
+            const adviceSlip = data.slip
+            //declare a variable for the name of the obj parameter in the array
+            const adviceText = adviceSlip.advice
+
+            const nameHeader = document.createElement('h3')
+                    nameHeader.innerText = "Your advice: " + adviceText
+                    adviceSection.appendChild(nameHeader)
+
+            // const a = new String
+            // const a = new String(adviceText)
+
+            fetchShakespeareData(adviceText)
+        }
+
+            const fetchShakespeareData = (adviceText) => {
+                // console.log ('fetching Shakespeare data!')
+
+                //fetch the api from the variable you declared, then convert it to json so it's readable, append the data from below
+                fetch(`https://api.funtranslations.com/translate/shakespeare.json?text=${adviceText}`)
+                .then(response => response.json())
+                .then((data) => appendShakespeareData(data))
+            }
+    
+                const appendShakespeareData = (data) => {
+                    // console.log(data)
+
+                    const shakespeareData = data.contents
+                    const translatedText = shakespeareData.translated
+
+                    //ACTIVATE THIS TOMORROW, DEACTIVATE ADVICE DATA!!!
+                    // const nameHeader = document.createElement('h3')
+                    // nameHeader.innerText = "Your advice: " + translatedText
+                    // adviceSection.appendChild(nameHeader)
+
+            }
+
+        //since js is event based, we need to specify what event the element needs to be waiting for, and what the function will perform
+        triggerButton.addEventListener("click", fetchNASAdata)
+
+    </script>
+</body>
+</html>
+

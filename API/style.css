@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap');
+
+h1 {
+  text-align: center;
+  color: #F9F5C1;
+  text-align: center;
+  font-size: 64px;
+  font-family: 'Nova Cut', sans-serif;
+  }
+
+
+h3 {
+    text-align: center;
+    color: #F9F5C1;
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Nova Cut', sans-serif;
+    }
+
+    body {
+      background-image: radial-gradient(ellipse at bottom, #d42dab 5%, #4d1d63 50%, #030243 100%);
+    }
+    
+
+#backgroundImage {
+    height: 100vh;
+    background-size: cover;
+  }
+
+  .top-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+  }
+
+.advice #adviceSection {
+  display: flex;
+  align-items: center;
+  /* background-image: url("https://img.freepik.com/premium-photo/old-used-paper-texture-isolated-white_118047-8911.jpg?w=2000"); */
+  background-color: rgba(64, 28, 163, 0.3);
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border-radius: 5px;
+  }
+
+  #initTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  button {
+    color:black;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    background-color: #F9F5C1;
+    border: none;
+    border-radius: 5px;
+
+  }
+  button:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: rgba(64, 28, 163, 0.3);
+    color: white;
+
+
+  }
